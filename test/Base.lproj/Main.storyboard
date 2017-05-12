@@ -67,6 +67,30 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLv-AE-Tbq">
+                                <rect key="frame" x="0.0" y="337" width="187.5" height="330"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.35801237797827545" blue="0.34396811840028685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Wrong">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="answerWrong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yyt-Vd-vMq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wi-Fn-T9n">
+                                <rect key="frame" x="187" y="337" width="187.5" height="330"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.22364673167297988" green="0.37613151108649479" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Right">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="answerRight:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lOV-Jd-sMb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -78,6 +102,8 @@
                         <outlet property="labelNum3" destination="nJy-zC-iGm" id="TR6-b7-oeM"/>
                         <outlet property="plus" destination="eqC-VM-XZr" id="QXX-Hz-0Nz"/>
                         <outlet property="progressBAr" destination="8eg-Rt-tGb" id="ent-es-Q7c"/>
+                        <outlet property="rightButton" destination="3wi-Fn-T9n" id="DTY-bj-Hw5"/>
+                        <outlet property="wrongButton" destination="mLv-AE-Tbq" id="yiu-dc-UXy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

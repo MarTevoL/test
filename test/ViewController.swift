@@ -20,12 +20,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var progressBAr: UIProgressView!
     
+    @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var wrongButton: UIButton!
+    
     var time = Timer()
     var num1 = 1
     var num2 = 2
     var numA = 3
     var numB = 3
     var answer = 0
+    var num3display = 0
     
     
     override func viewDidLoad() {
@@ -33,14 +37,28 @@ class ViewController: UIViewController {
         
         progressBAr.progress = 0.0
         
-        time = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(ViewController.tinhtoan), userInfo: nil, repeats: true)
+//        time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.tinhtoan), userInfo: nil, repeats: true)
         
         tinhtoan()
     }
 
-//    @IBAction func testRandom(_ sender: Any) {
-//        tinhtoan()
-//    }
+    @IBAction func answerRight(_ sender: Any) {
+        if (answer == num3display){
+            tinhtoan()
+        } else {
+            print("tra loi sai")
+            print("display high score")
+        }
+    }
+    
+    @IBAction func answerWrong(_ sender: Any) {
+        if(answer != num3display){
+            tinhtoan()
+        } else {
+            print("tra loi sai")
+            print("display high score")
+        }
+    }
 
     func tinhtoan(){
         num1 = Int(arc4random_uniform(9))
@@ -49,10 +67,11 @@ class ViewController: UIViewController {
         answer = num1 + num2
         numA = answer - 1
         numB = answer + 1
+        num3display = randomIntFrom(start: numA, to: numB)
         
         labelNum1.text = String(num1)
         labelNum2.text = String(num2)
-        labelNum3.text = String(randomIntFrom(start: numA, to: numB))
+        labelNum3.text = String(num3display)
 
     }
     
@@ -71,5 +90,8 @@ class ViewController: UIViewController {
         label.text = String(format: "%.1f", progressBAr.progress)
     }
   
+    
+    
+    
 }
 
