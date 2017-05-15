@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelNum1: UILabel!
     @IBOutlet weak var labelNum2: UILabel!
     @IBOutlet weak var labelNum3: UILabel!
+    @IBOutlet weak var labelScore: UILabel!
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var progressBAr: UIProgressView!
@@ -30,67 +31,80 @@ class ViewController: UIViewController {
     var numB = 3
     var answer = 0
     var num3display = 0
+    var score = 0
+    var i:Double = 0
     
+    var classTinhtoan = tinhtoan()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        progressBAr.progress = 0.0
+        progressBAr.progress = Float(i)
         
-//        time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.tinhtoan), userInfo: nil, repeats: true)
         
-        tinhtoan()
+        
+        callNumber()
+        
+        
+        
     }
 
     @IBAction func answerRight(_ sender: Any) {
+        runTime()
         if (answer == num3display){
-            tinhtoan()
+            i = 0
+            callNumber()
         } else {
             print("tra loi sai")
-            print("display high score")
+            print("display high score: ", score)
         }
     }
     
     @IBAction func answerWrong(_ sender: Any) {
+        runTime()
         if(answer != num3display){
-            tinhtoan()
+            i = 0
+            callNumber()
         } else {
             print("tra loi sai")
-            print("display high score")
+            print("display high score: ", score)
         }
     }
 
-    func tinhtoan(){
+    func callNumber(){
         num1 = Int(arc4random_uniform(9))
         num2 = Int(arc4random_uniform(9))
         
         answer = num1 + num2
         numA = answer - 1
         numB = answer + 1
-        num3display = randomIntFrom(start: numA, to: numB)
+        num3display = classTinhtoan.randomIntFrom(start: numA, to: numB)
         
         labelNum1.text = String(num1)
         labelNum2.text = String(num2)
         labelNum3.text = String(num3display)
+        
+        score += 1
+        labelScore.text = String(score)
+
 
     }
     
-    func randomIntFrom(start: Int, to end: Int) -> Int {
-        var a = start
-        var b = end
-        // swap to prevent negative integer crashes
-        if a > b {
-            swap(&a, &b)
-        }
-        return Int(arc4random_uniform(UInt32(b - a + 1))) + a
+    func runTime(){
+        time.invalidate()
+        time = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
     }
     
     func updateTimer(){
-        progressBAr.progress += 0.1
-        label.text = String(format: "%.1f", progressBAr.progress)
+        if (i==0){
+            i = 1
+        } else {
+            i -= 0.001
+            progressBAr.progress = Float(i)
+        }
     }
   
-    
+   
     
     
 }
