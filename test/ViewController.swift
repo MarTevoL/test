@@ -17,10 +17,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelNum2: UILabel!
     @IBOutlet weak var labelNum3: UILabel!
     @IBOutlet weak var labelScore: UILabel!
+    @IBOutlet weak var labelHighscore: UILabel!
+    @IBOutlet weak var popupBanner: UIView!
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var progressBAr: UIProgressView!
     
+    @IBOutlet weak var retryButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var wrongButton: UIButton!
     
@@ -31,43 +34,70 @@ class ViewController: UIViewController {
     var numB = 3
     var answer = 0
     var num3display = 0
-    var score = 0
+    var score = -1
+    var highScore = 0
     var i:Double = 0
-    
     var classTinhtoan = tinhtoan()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        retryButton.isHidden = true
+        
         progressBAr.progress = Float(i)
-        
-        
         
         callNumber()
         
-        
+        popupBanner.isHidden = true
         
     }
+    
+    func setHighscore(){
+        
+        score += 1
+        labelScore.text = String(score)
+        if (score > highScore)
+        {
+            highScore = score
+            let highScoreDefault = UserDefaults.standard
+            highScoreDefault.set(highScore, forKey: "highScore")
+            highScoreDefault.synchronize()
+        }
+    }
 
+    @IBAction func retryButton(_ sender: Any) {
+        score = -1
+        i = 1
+        progressBAr.progress = Float(i)
+
+        callNumber()
+        time.invalidate()
+        
+        rightButton.isHidden = false
+        wrongButton.isHidden = false
+        popupBanner.isHidden = true
+    }
+    
     @IBAction func answerRight(_ sender: Any) {
         runTime()
         if (answer == num3display){
-            i = 0
+            i = 1
             callNumber()
         } else {
-            print("tra loi sai")
-            print("display high score: ", score)
+            lose()
         }
     }
     
     @IBAction func answerWrong(_ sender: Any) {
         runTime()
         if(answer != num3display){
-            i = 0
+            i = 1
             callNumber()
         } else {
-            print("tra loi sai")
-            print("display high score: ", score)
+            lose()
         }
     }
 
@@ -84,8 +114,7 @@ class ViewController: UIViewController {
         labelNum2.text = String(num2)
         labelNum3.text = String(num3display)
         
-        score += 1
-        labelScore.text = String(score)
+        setHighscore()
 
 
     }
@@ -96,14 +125,32 @@ class ViewController: UIViewController {
     }
     
     func updateTimer(){
-        if (i==0){
+        if (i<=0){
+            lose()
             i = 1
         } else {
-            i -= 0.001
+            i -= 0.0001
             progressBAr.progress = Float(i)
         }
     }
+    
+    func lose(){
+        popupBanner.isHidden = false
+        time.invalidate()
+        rightButton.isHidden = true
+        wrongButton.isHidden = true
+        retryButton.isHidden = false
+        print("tra loi sai")
+        print("display high score: ", score)
+        
+        let highScoreDefault = UserDefaults.standard
+        highScore = highScoreDefault.value(forKey: "highScore") as! Int
+        labelHighscore.text = String(highScore)
+
+
+    }
   
+   
    
     
     
