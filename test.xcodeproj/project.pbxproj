@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1673ADE1ECDE36800F8D5BB /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1673ADC1ECDE36800F8D5BB /* click.wav */; };
+		C1673ADF1ECDE36800F8D5BB /* lose.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1673ADD1ECDE36800F8D5BB /* lose.wav */; };
+		C1673AE11ECEA17F00F8D5BB /* ok.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1673AE01ECEA17F00F8D5BB /* ok.wav */; };
+		C1673AE51ED023B400F8D5BB /* mute.png in Resources */ = {isa = PBXBuildFile; fileRef = C1673AE31ED023B400F8D5BB /* mute.png */; };
+		C1673AE61ED023B400F8D5BB /* speaker.png in Resources */ = {isa = PBXBuildFile; fileRef = C1673AE41ED023B400F8D5BB /* speaker.png */; };
 		C17D7ED81EC361A0007CE93C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D7ED71EC361A0007CE93C /* AppDelegate.swift */; };
 		C17D7EDA1EC361A0007CE93C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D7ED91EC361A0007CE93C /* ViewController.swift */; };
 		C17D7EDD1EC361A0007CE93C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C17D7EDB1EC361A0007CE93C /* Main.storyboard */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C1673ADC1ECDE36800F8D5BB /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.wav; sourceTree = "<group>"; };
+		C1673ADD1ECDE36800F8D5BB /* lose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lose.wav; sourceTree = "<group>"; };
+		C1673AE01ECEA17F00F8D5BB /* ok.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ok.wav; sourceTree = "<group>"; };
+		C1673AE31ED023B400F8D5BB /* mute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mute.png; sourceTree = "<group>"; };
+		C1673AE41ED023B400F8D5BB /* speaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speaker.png; sourceTree = "<group>"; };
 		C17D7ED41EC361A0007CE93C /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C17D7ED71EC361A0007CE93C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C17D7ED91EC361A0007CE93C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +47,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C1673ADB1ECDE33C00F8D5BB /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				C1673AE01ECEA17F00F8D5BB /* ok.wav */,
+				C1673ADC1ECDE36800F8D5BB /* click.wav */,
+				C1673ADD1ECDE36800F8D5BB /* lose.wav */,
+			);
+			name = sound;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		C1673AE21ED0239600F8D5BB /* images */ = {
+			isa = PBXGroup;
+			children = (
+				C1673AE31ED023B400F8D5BB /* mute.png */,
+				C1673AE41ED023B400F8D5BB /* speaker.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		C17D7ECB1EC361A0007CE93C = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +86,8 @@
 		C17D7ED61EC361A0007CE93C /* test */ = {
 			isa = PBXGroup;
 			children = (
+				C1673AE21ED0239600F8D5BB /* images */,
+				C1673ADB1ECDE33C00F8D5BB /* sound */,
 				C17D7ED71EC361A0007CE93C /* AppDelegate.swift */,
 				C17D7ED91EC361A0007CE93C /* ViewController.swift */,
 				C17D7EDB1EC361A0007CE93C /* Main.storyboard */,
@@ -93,6 +125,10 @@
 		C17D7ECC1EC361A0007CE93C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					mute,
+					speaker,
+				);
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Martevol;
@@ -127,9 +163,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1673ADF1ECDE36800F8D5BB /* lose.wav in Resources */,
+				C1673AE61ED023B400F8D5BB /* speaker.png in Resources */,
+				C1673AE51ED023B400F8D5BB /* mute.png in Resources */,
 				C17D7EE21EC361A0007CE93C /* LaunchScreen.storyboard in Resources */,
 				C17D7EDF1EC361A0007CE93C /* Assets.xcassets in Resources */,
+				C1673AE11ECEA17F00F8D5BB /* ok.wav in Resources */,
 				C17D7EDD1EC361A0007CE93C /* Main.storyboard in Resources */,
+				C1673ADE1ECDE36800F8D5BB /* click.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

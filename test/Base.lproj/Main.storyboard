@@ -36,21 +36,21 @@
                                 <rect key="frame" x="59" y="69" width="114" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="25"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="num2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNs-Sx-ph6">
                                 <rect key="frame" x="200" y="69" width="121" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="25"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="num3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJy-zC-iGm">
                                 <rect key="frame" x="137" y="163" width="103" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="35"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eqC-VM-XZr">
@@ -68,7 +68,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oi9-7G-nHt">
-                                <rect key="frame" x="93" y="402" width="188" height="84"/>
+                                <rect key="frame" x="123" y="394" width="129" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -76,7 +76,6 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="answerRight:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b8Q-4s-5bm"/>
                                     <action selector="retryButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6XY-jH-XAF"/>
                                 </connections>
                             </button>
@@ -125,8 +124,17 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vzp-W7-Qmp">
+                                <rect key="frame" x="16" y="28" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="speaker.png"/>
+                                <state key="disabled" backgroundImage="mute"/>
+                                <connections>
+                                    <action selector="soundSetting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9bF-Zh-iy9"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="equal" destination="gEN-aD-phH" id="nTb-0Z-IfH"/>
@@ -141,6 +149,7 @@
                         <outlet property="progressBAr" destination="8eg-Rt-tGb" id="ent-es-Q7c"/>
                         <outlet property="retryButton" destination="Oi9-7G-nHt" id="Z3t-Tk-JlY"/>
                         <outlet property="rightButton" destination="3wi-Fn-T9n" id="DTY-bj-Hw5"/>
+                        <outlet property="soundButton" destination="vzp-W7-Qmp" id="fNl-Zv-J14"/>
                         <outlet property="wrongButton" destination="mLv-AE-Tbq" id="yiu-dc-UXy"/>
                     </connections>
                 </viewController>
@@ -149,4 +158,8 @@
             <point key="canvasLocation" x="-2.3999999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mute" width="256" height="256"/>
+        <image name="speaker.png" width="256" height="256"/>
+    </resources>
 </document>

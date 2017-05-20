@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -23,9 +24,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var progressBAr: UIProgressView!
     
+    @IBOutlet weak var soundButton: UIButton!
     @IBOutlet weak var retryButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var wrongButton: UIButton!
+    
+    var clickSound = AVAudioPlayer()
+    var loseSound = AVAudioPlayer()
+    var soundMutes = false
     
     var time = Timer()
     var num1 = 1
@@ -43,7 +49,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         
+        let highScoreDefault = UserDefaults.standard
+        highScore = highScoreDefault.value(forKey: "highScore") as! Int
+        labelHighscore.text = String(highScore)
+        
+        sound()
         
         retryButton.isHidden = true
         
@@ -51,9 +63,11 @@ class ViewController: UIViewController {
         
         callNumber()
         
-        popupBanner.isHidden = true
+        
+//        popupBanner.isHidden = true
         
     }
+    
     
     func setHighscore(){
         
@@ -72,18 +86,19 @@ class ViewController: UIViewController {
         score = -1
         i = 1
         progressBAr.progress = Float(i)
-
+        
         callNumber()
         time.invalidate()
         
         rightButton.isHidden = false
         wrongButton.isHidden = false
-        popupBanner.isHidden = true
+        //        popupBanner.isHidden = true
     }
     
     @IBAction func answerRight(_ sender: Any) {
         runTime()
         if (answer == num3display){
+            clickSound.play()
             i = 1
             callNumber()
         } else {
@@ -94,6 +109,7 @@ class ViewController: UIViewController {
     @IBAction func answerWrong(_ sender: Any) {
         runTime()
         if(answer != num3display){
+            clickSound.play()
             i = 1
             callNumber()
         } else {
@@ -115,6 +131,7 @@ class ViewController: UIViewController {
         labelNum3.text = String(num3display)
         
         setHighscore()
+        
 
 
     }
@@ -135,7 +152,8 @@ class ViewController: UIViewController {
     }
     
     func lose(){
-        popupBanner.isHidden = false
+        loseSound.play()
+//        popupBanner.isHidden = false
         time.invalidate()
         rightButton.isHidden = true
         wrongButton.isHidden = true
@@ -150,8 +168,40 @@ class ViewController: UIViewController {
 
     }
   
+    func sound(){
+        do{
+            clickSound = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "click", ofType: "wav")!))
+            clickSound.volume = 0.1
+            clickSound.prepareToPlay()
+            
+            loseSound = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "lose", ofType: "wav")!))
+            loseSound.prepareToPlay()
+
+        }
+        catch {
+            print(error)
+        }
+    }
    
-   
+    @IBAction func soundSetting(_ sender: Any) {
+        if (!soundMutes)
+        {
+            clickSound.volume = 0
+            loseSound.volume = 0
+            soundButton.setImage(UIImage(named: "mute"), for: UIControlState.normal)
+            soundMutes = true
+        }
+        else {
+            clickSound.volume = 0.2
+            loseSound.volume = 0.2
+            soundButton.setImage(UIImage(named: "speaker"), for: UIControlState.normal)
+            soundMutes = false
+        }
+        
+        
+        
+
+    }
     
     
 }
